@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lockapp4/to_do.dart';
+import 'package:lockapp4/decidetime.dart';
 
 void main() {
   // 最初に表示するWidget

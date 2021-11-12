@@ -2,33 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_picker/flutter_picker.dart';
+
 class TodoAddPage extends StatefulWidget {
   @override
    TodoAddPageState createState() => TodoAddPageState();
 }
 
 class TodoAddPageState extends State<TodoAddPage> {
-  var _mydatetime = new DateTime.now();
+  int _mydatetime;
+
   // 日時を指定したフォーマットで指定するためのフォーマッター
   
   //時間を取得
   var _datetime;
+   
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child:Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-             Text('時間□分の間\n画面をロックする',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 40)),
+             Text(_datetime,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 40)),
   SizedBox(
      width: 200,
      height: 50,
   child: OutlinedButton(
           child: const Text("時間設定"),
           style: OutlinedButton.styleFrom(
-          primary: Colors.blue,
+          primary: Colors.green,
           shape: const StadiumBorder(),
-          side: const BorderSide(color: Colors.blue),
+          side: const BorderSide(color: Colors.green),
           
   ),
   onPressed: () {
@@ -38,8 +42,8 @@ class TodoAddPageState extends State<TodoAddPage> {
       onConfirm: (Picker picker, List value) {
         setState(() => {_datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])});
       },
+      
     ).showModal(context);
-
   }
   
 ),
