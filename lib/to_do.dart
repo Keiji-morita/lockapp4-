@@ -11,13 +11,14 @@ class TodoAddPageState extends State<TodoAddPage> {
   var _mydatetime = new DateTime.now();
   // 日時を指定したフォーマットで指定するためのフォーマッター
   var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child:Column(
           children: [
-             Text('□時間□分の間\n画面をロックする',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 40)),
+             Text('時間□分の間\n画面をロックする',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 40)),
   OutlinedButton(
           child: const Text("時間設定"),
           style: OutlinedButton.styleFrom(
