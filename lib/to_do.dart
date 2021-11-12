@@ -10,27 +10,31 @@ class TodoAddPage extends StatefulWidget {
 class TodoAddPageState extends State<TodoAddPage> {
   var _mydatetime = new DateTime.now();
   // 日時を指定したフォーマットで指定するためのフォーマッター
-  var formatter = new DateFormat('yyyy/MM/dd(E) HH:mm');
+  
   //時間を取得
   var _datetime;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:Column(
+        child:Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
              Text('時間□分の間\n画面をロックする',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 40)),
-  OutlinedButton(
+  SizedBox(
+     width: 200,
+     height: 50,
+  child: OutlinedButton(
           child: const Text("時間設定"),
           style: OutlinedButton.styleFrom(
           primary: Colors.blue,
           shape: const StadiumBorder(),
           side: const BorderSide(color: Colors.blue),
+          
   ),
   onPressed: () {
    Picker(
       adapter: DateTimePickerAdapter(type: PickerDateTimeType.kHMS, value: _datetime, customColumnType: [3, 4, 5]),
-      title: Text("Select Time"),
+      title: Text("時間指定"),
       onConfirm: (Picker picker, List value) {
         setState(() => {_datetime = DateTime.utc(0, 0, 0, value[0], value[1], value[2])});
       },
@@ -39,7 +43,11 @@ class TodoAddPageState extends State<TodoAddPage> {
   }
   
 ),
- OutlinedButton(
+  ),
+ SizedBox(
+   width: 200,
+     height: 50,
+ child: OutlinedButton(
           child: const Text('スタート！'),
           style: OutlinedButton.styleFrom(
           primary: Colors.blue,
@@ -48,8 +56,12 @@ class TodoAddPageState extends State<TodoAddPage> {
   ),
   onPressed: () {},
 ),
+ ),
  
- OutlinedButton(
+ SizedBox(
+      width: 200,
+     height: 50,
+ child: OutlinedButton(
           child: const Text('キャンセル'),
           style: OutlinedButton.styleFrom(
           primary: Colors.red,
@@ -62,7 +74,7 @@ class TodoAddPageState extends State<TodoAddPage> {
             Navigator.of(context).pop();
           },
         ),
-           
+ ),   
 
           ],
         )
