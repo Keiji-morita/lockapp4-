@@ -30,7 +30,10 @@ class _TodoListPageState extends State<TodoListPage> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                OutlinedButton(
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: OutlinedButton(
                   child: const Text('今すぐ画面をロック'),
                   style: OutlinedButton.styleFrom(
                     primary: Colors.red,
@@ -42,7 +45,11 @@ class _TodoListPageState extends State<TodoListPage> {
                         MaterialPageRoute(builder: (context) => TodoAddPage()));
                   },
                 ),
-                OutlinedButton(
+              ),
+                SizedBox(
+                width: 200,
+                height: 50,
+                child: OutlinedButton(
                   child: const Text('時間を決めてロック'),
                   style: OutlinedButton.styleFrom(
                     primary: Colors.blue,
@@ -50,6 +57,7 @@ class _TodoListPageState extends State<TodoListPage> {
                     side: const BorderSide(color: Colors.blue),
                   ),
                   onPressed: () {},
+                ),
                 ),
               ]),
         ),
