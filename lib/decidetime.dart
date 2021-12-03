@@ -20,7 +20,7 @@ class TodoAddPage extends StatefulWidget {
 }
 
 class TodoAddPageState extends State<TodoAddPage> {
-  final numbars = List<String>.generate(7, (index) => '$index');
+  final numbars = List<String>.generate(9, (index) => '$index');
   final numbars_1 = List<String>.generate(60, (indexs) => '$indexs');
   
 // ↓にPickerで選択したアイテムが代入される予定です。

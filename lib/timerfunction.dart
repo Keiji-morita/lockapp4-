@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lockapp4/timedonescreen.dart';
 import 'package:slide_countdown/slide_countdown.dart';
+import 'dart:async';
 
 class TimerFunction extends StatefulWidget {
-  
   @override
   TimerFunctionState createState() => TimerFunctionState();
    TimerFunction(this.selectNumber, this.selectNumber_1, this.selectNumber_2);
@@ -11,14 +12,32 @@ class TimerFunction extends StatefulWidget {
   final  selectNumber_2;
 }
 
-const defaultDuration = Duration(hours: 1,minutes: 30);
+
+const defaultDuration = Duration(hours: 0,minutes: 0, seconds:10); 
 const defaultPadding = EdgeInsets.symmetric(horizontal: 10, vertical: 5);
 
 class TimerFunctionState extends State<TimerFunction> {
+
   
- 
+
   @override
   Widget build(BuildContext context) {
+
+    //タイマー記述分？
+Future.delayed(Duration(hours: int.parse(widget.selectNumber),minutes: 
+int.parse(widget.selectNumber_1) ), () {
+    
+             });
+    
+    
+    
+    //戻る処理の記述分
+     Future.delayed(Duration(hours: int.parse(widget.selectNumber),minutes: 
+int.parse(widget.selectNumber_1)), () {
+             Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Timedonescreen()));
+                  });
+   
       return Scaffold(
       body: Center(
           child: Column(
@@ -35,6 +54,7 @@ class TimerFunctionState extends State<TimerFunction> {
                
        ),
 
+            
             const SlideCountdownSeparated(
               duration: defaultDuration,
               padding: defaultPadding,
