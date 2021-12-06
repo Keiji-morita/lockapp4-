@@ -37,6 +37,7 @@ dependencies:
   flutter_picker: ^2.0.2
   slide_countdown: ^0.0.7
   intl: ^0.17.0
+  platform_date_picker: ^0.0.4+1
 
 dev_dependencies:
   flutter_test:

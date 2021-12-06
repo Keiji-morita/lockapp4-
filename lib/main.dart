@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lockapp4/decidedayshours.dart';
 import 'package:lockapp4/decidetime.dart';
 
 void main() {
@@ -56,7 +57,10 @@ class _TodoListPageState extends State<TodoListPage> {
                     shape: const StadiumBorder(),
                     side: const BorderSide(color: Colors.blue),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Decidedayshours()));
+                  },
                 ),
                 ),
               ]),

@@ -4,6 +4,7 @@ import 'package:slide_countdown/slide_countdown.dart';
 import 'dart:async';
 
 class TimerFunction extends StatefulWidget {
+  
   @override
   TimerFunctionState createState() => TimerFunctionState();
    TimerFunction(this.selectNumber, this.selectNumber_1, this.selectNumber_2);
@@ -13,7 +14,8 @@ class TimerFunction extends StatefulWidget {
 }
 
 
-const defaultDuration = Duration(hours: 0,minutes: 0, seconds:10); 
+
+const defaultDuration = Duration(hours: 1,minutes: 0, seconds:10); 
 const defaultPadding = EdgeInsets.symmetric(horizontal: 10, vertical: 5);
 
 class TimerFunctionState extends State<TimerFunction> {
@@ -24,9 +26,13 @@ class TimerFunctionState extends State<TimerFunction> {
   Widget build(BuildContext context) {
 
     //タイマー記述分？
-Future.delayed(Duration(hours: int.parse(widget.selectNumber),minutes: 
-int.parse(widget.selectNumber_1) ), () {
+Future.delayed(Duration(hours: int.parse(widget.selectNumber),
+minutes: int.parse(widget.selectNumber_1) ), (
+
+
+) {
     
+
              });
     
     
