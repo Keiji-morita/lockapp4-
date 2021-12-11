@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:lockapp4/decidetime.dart';
+import 'package:lockapp4/LockTimeList .dart' show DateScheduleList;
+import 'package:lockapp4/decidetime.dart' show TodoAddPage;
 
 void main() {
   // 最初に表示するWidget
@@ -26,6 +26,10 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+            appBar: AppBar(
+               title: Text("home"),
+              centerTitle: true,
+            ),
       body: Center(
         child: Container(
           child: Column(
@@ -58,7 +62,9 @@ class _TodoListPageState extends State<TodoListPage> {
                     side: const BorderSide(color: Colors.blue),
                   ),
                   onPressed: () {
-                    
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => DateScheduleList())
+                        );
                   },
                 ),
                 ),

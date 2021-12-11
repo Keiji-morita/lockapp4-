@@ -76,21 +76,7 @@ class TodoAddPageState extends State<TodoAddPage> {
                               .toList(),
                         ),
                       ),
-                      Expanded(
-                        child: CupertinoPicker(
-                          itemExtent: 30,
-                          scrollController:
-                              FixedExtentScrollController(initialItem: 0),
-                          onSelectedItemChanged: (index) {
-                            setState(() {
-                              [index];
-                            });
-                          },
-                          children: numbars_1
-                              .map((seconds) => new Text(seconds))
-                              .toList(),
-                        ),
-                      ),
+
                     ],
                   ),
                 ),
@@ -107,6 +93,15 @@ class TodoAddPageState extends State<TodoAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+               leading: new IconButton(
+               icon: new Icon(Icons.arrow_back, color: Colors.black),
+               onPressed: () => Navigator.of(context).pop(),
+              ), 
+              title: Text("時間設定"),
+              centerTitle: true,
+            ),
+
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -148,23 +143,7 @@ class TodoAddPageState extends State<TodoAddPage> {
               },
             ),
           ),
-          SizedBox(
-            width: 200,
-            height: 50,
-            child: OutlinedButton(
-              child: const Text('キャンセル'),
-              style: OutlinedButton.styleFrom(
-                primary: Colors.red,
-                shape: const StadiumBorder(),
-                side: const BorderSide(color: Colors.red),
-              ),
-              // ボタンをクリックした時の処理
-              onPressed: () {
-                // "pop"で前の画面に戻る
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
+
         ],
       )),
       // This trailing comma makes auto-formatting nicer for build methods.

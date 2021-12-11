@@ -35,9 +35,11 @@ class TimedonescreenState extends State<Timedonescreen> {
                     side: const BorderSide(color: Colors.red),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyTodoApp()));
-                  },
+                    Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyTodoApp()),
+                          (_) => false);
+                    }
                 ),
                 ),
           ],
