@@ -4,6 +4,8 @@ import 'package:flutter_picker/flutter_picker.dart';
 import 'package:f_datetimerangepicker/f_datetimerangepicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:time_range_picker/time_range_picker.dart';
+import 'package:lockapp4/whenStartEnd.dart' show MadeSchedule;
+
 
 
 
@@ -87,126 +89,7 @@ void _cupertinoPicker() {
     String selectEndMuinetes = '0';
 
 
-  void _cupertinoPicker_2() {
-    showCupertinoModalPopup(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: 250,
-            color: Colors.white,
-            child: Column(
-              children: [
-                TextButton(
-                  child: const Text('閉じる'),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                const Divider(),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: CupertinoPicker( //change
-                          looping: true,
-                          itemExtent: 30,
-                          scrollController:
-                              FixedExtentScrollController(initialItem: 0),
-                          onSelectedItemChanged: (index) {
-                            setState(() {
-                              slectStartHour = startHour[index];
-                            });
-                          },
-                          children: startHour
-                              .map((numbar) => new Text(numbar))
-                              .toList(),
-                        ),
-                      ),
-                    
-                    Expanded(
-                        child: CupertinoPicker( //change
-                          looping: true,
-                          itemExtent: 30,
-                          scrollController:
-                              FixedExtentScrollController(initialItem: 0),
-                          onSelectedItemChanged: (index) {
-                            setState(() {
-                              slectStartMuinetes = startMuinetes[index];//change
-                            });
-                          },
-                          children: startMuinetes //change
-                              .map((numbar) => new Text(numbar))
-                              .toList(),
-                        ),
-                      ),
 
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-//終了時刻設定機能
-  void _cupertinoPicker_3() {
-    showCupertinoModalPopup(
-        context: context,
-        builder: (context) {
-          return Container(
-            height: 250,
-            color: Colors.white,
-            child: Column(
-              children: [
-                TextButton(
-                  child: const Text('閉じる'),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                const Divider(),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: CupertinoPicker( //change
-                          looping: true,
-                          itemExtent: 30,
-                          scrollController:
-                              FixedExtentScrollController(initialItem: 0),
-                          onSelectedItemChanged: (index) {
-                            setState(() {
-                              selectEndHour = endHour[index];
-                            });
-                          },
-                          children: startHour
-                              .map((numbar) => new Text(numbar))
-                              .toList(),
-                        ),
-                      ),
-                    
-                    Expanded(
-                        child: CupertinoPicker( //change
-                          looping: true,
-                          itemExtent: 30,
-                          scrollController:
-                              FixedExtentScrollController(initialItem: 0),
-                          onSelectedItemChanged: (index) {
-                            setState(() {
-                              selectEndMuinetes = endMuinetes[index];//change
-                            });
-                          },
-                          children: startMuinetes //change
-                              .map((numbar) => new Text(numbar))
-                              .toList(),
-                        ),
-                      ),
-
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-  }
   
   // データを元に表示するWidget
   @override
@@ -227,11 +110,7 @@ void _cupertinoPicker() {
             //曜日設定ボタン
             child: TextButton(
                 child: const Text("曜日"),
-                style: TextButton.styleFrom(
-                  primary: Colors.green,
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: Colors.green),
-                ),
+                
                 onPressed: () {
                   _cupertinoPicker();
                 }),
@@ -251,50 +130,15 @@ void _cupertinoPicker() {
                 // 均等配置
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-              SizedBox(
-            width: 80,
-            height: 40,
-            //開始時間設定ボタン
-            child: TextButton(
-                child: const Text("開始時間"),
-                style: TextButton.styleFrom(
-                  primary: Colors.green,
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: Colors.green),
-                ),
-                onPressed: () {
-                  _cupertinoPicker_2();
-                }),
+                          TextButton(
+            onPressed: () async {
+              TimeRange result = await showTimeRangePicker(
+                context: context,
+              );
+              print("result " + result.toString());
+            },
+            child: Text("時間設定"),
           ),
-             Container(child: Text('${slectStartHour}時${slectStartMuinetes}分')),
-
-                  
-                ],
-              ),
-            ),
-
-                       Container(
-              width: double.infinity,
-              height: 60,
-              child: Row(
-                // 均等配置
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-              SizedBox(
-            width: 80,
-            height: 40,
-                child: TextButton(
-                child: const Text("終了時刻"),
-                style: TextButton.styleFrom(
-                  primary: Colors.green,
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: Colors.green),
-                ),
-                onPressed: () {
-                  _cupertinoPicker_3();
-                }),
-          ),
-          Container(child: Text('${selectEndHour}時${selectEndMuinetes }分')),
 
 
                   

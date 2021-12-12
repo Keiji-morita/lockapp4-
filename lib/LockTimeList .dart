@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lockapp4/main.dart';
 import 'package:lockapp4/decideschedule.dart' show Decidedatetime;
 
+
 void main() => runApp(DateScheduleList());
 
 class TimeTables extends StatelessWidget {
@@ -19,6 +20,7 @@ class TimeTables extends StatelessWidget {
       ),
       // リスト一覧画面を表示
       home: DateScheduleList(),
+      
     );
   }
 }
@@ -58,6 +60,7 @@ class _DateScheduleListState extends State<DateScheduleList> {
             ),
           );
         },
+        
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
