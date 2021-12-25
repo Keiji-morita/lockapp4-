@@ -1,122 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:time_range/time_range.dart';
+import 'package:time_range_picker/time_range_picker.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
+      
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MadeSchedule(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class MadeSchedule extends StatefulWidget {
+  const MadeSchedule({Key key, this.title}) : super(key: key);
+
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+
   @override
-  _HomePageState createState() => _HomePageState();
+  _MadeScheduleState createState() => _MadeScheduleState();
 }
 
-class _HomePageState extends State<HomePage> {
-  static const orange = Color(0xFFFE9A75);
-  static const dark = Color(0xFF333A47);
-  static const double leftPadding = 50;
-
-  final _defaultTimeRange = TimeRangeResult(
-    TimeOfDay(hour: 14, minute: 50),
-    TimeOfDay(hour: 15, minute: 20),
-  );
-  TimeRangeResult? _timeRange;
-
-  @override
-  void initState() {
-    super.initState();
-    _timeRange = _defaultTimeRange;
-  }
-
+class _MadeScheduleState extends State<MadeSchedule> {
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
-      backgroundColor: Colors.white70,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 16, left: leftPadding),
-              child: Text(
-                'Opening Times',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(fontWeight: FontWeight.bold, color: dark),
-              ),
-            ),
-            
-            SizedBox(height: 20),
-            TimeRange(
-              fromTitle: Text(
-                'FROM',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: dark,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              toTitle: Text(
-                'TO',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: dark,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              titlePadding: leftPadding,
-              textStyle: TextStyle(
-                fontWeight: FontWeight.normal,
-                color: dark,
-              ),
-              activeTextStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: orange,
-              ),
-              borderColor: dark,
-              activeBorderColor: dark,
-              backgroundColor: Colors.transparent,
-              activeBackgroundColor: dark,
-              firstTime: TimeOfDay(hour: 8, minute: 00),
-              lastTime: TimeOfDay(hour: 20, minute: 00),
-              initialRange: _timeRange,
-              timeStep: 10,
-              timeBlock: 30,
-              onRangeCompleted: (range) => setState(() => _timeRange = range),
-            ),
-            SizedBox(height: 30),
-            if (_timeRange != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0, left: leftPadding),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Selected Range: ${_timeRange!.start.format(context)} - ${_timeRange!.end.format(context)}',
-                      style: TextStyle(fontSize: 20, color: dark),
-                    ),
-                    SizedBox(height: 20),
-                    MaterialButton(
-                      child: Text('Default'),
-                      onPressed: () =>
-                          setState(() => _timeRange = _defaultTimeRange),
-                      color: orange,
-                    )
-                  ],
-                ),
-              ),
-          ],
-        ),
+      appBar: AppBar(
+        title: const Text("a"),
       ),
-    );
+      body: ListView(children: [
+        ElevatedButton(
+          onPressed: () async {
+            TimeRange result = await showTimeRangePicker(
+              context: context,
+              
+            );
+             },
+          child: const Text("Pure"),
+       
+        ),
+
+       ]
+     )
+    ); 
   }
 }
+
+
+

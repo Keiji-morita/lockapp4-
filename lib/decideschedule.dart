@@ -4,7 +4,8 @@ import 'package:flutter_picker/flutter_picker.dart';
 import 'package:f_datetimerangepicker/f_datetimerangepicker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:time_range_picker/time_range_picker.dart';
-import 'package:lockapp4/whenStartEnd.dart' show MadeSchedule;
+import 'package:lockapp4/whenStartEnd.dart' ;
+
 
 
 
@@ -73,28 +74,13 @@ void _cupertinoPicker() {
             ),
           );
         });
+
+
   }
-     //開始時間設定
-    final startHour = List<String>.generate(24, (index) => '$index');
-    final startMuinetes = List<String>.generate(60, (index) => '$index');
-    
-    String slectStartHour = '0';
-    String slectStartMuinetes = '0';
-
-     //終了時刻設定
-    final endHour = List<String>.generate(24, (index) => '$index');
-    final endMuinetes = List<String>.generate(60, (index) => '$index');
-
-    String selectEndHour = '0';
-    String selectEndMuinetes = '0';
-
-
-
-  
-  // データを元に表示するWidget
+ // データを元に表示するWidget
   @override
   Widget build(BuildContext context) {
-    
+  var result;
     var children2 = <Widget>[
       //曜日設定
            Container(
@@ -140,7 +126,12 @@ void _cupertinoPicker() {
             child: Text("時間設定"),
           ),
 
-
+          Container(
+              child: Text('${result.toString()}'),
+              ),
+          
+         
+          
                   
                 ],
               ),

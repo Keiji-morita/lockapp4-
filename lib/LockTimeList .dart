@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lockapp4/main.dart';
+import 'package:flutter_my_picker/common/date.dart';
 import 'package:lockapp4/decideschedule.dart' show Decidedatetime;
 
 
@@ -12,8 +12,7 @@ class TimeTables extends StatelessWidget {
       // 右上に表示される"debug"ラベルを消す
       debugShowCheckedModeBanner: false,
       // アプリ名
-      title: 'My Todo App',
-      theme: ThemeData(
+     theme: ThemeData(
         // テーマカラー
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -38,15 +37,19 @@ class _DateScheduleListState extends State<DateScheduleList> {
   // Todoリストのデータ
   List<String> todoList = [];
 
+
   @override
   Widget build(BuildContext context) {
+ 
+  
+ 
     return Scaffold(
       appBar: AppBar(
                leading: new IconButton(
                icon: new Icon(Icons.arrow_back, color: Colors.black),
                onPressed: () => Navigator.of(context).pop(),
               ), 
-              title: Text("ロックスケジュール設定"),
+              title: Text("ロックスケジュールを設定"),
               centerTitle: true,
             ),
 
@@ -56,7 +59,9 @@ class _DateScheduleListState extends State<DateScheduleList> {
         itemBuilder: (context, index) {
           return Card(
             child: ListTile(
-              title: Text(todoList[index]),
+              title: Text(todoList[index])
+                  
+
             ),
           );
         },
@@ -88,5 +93,6 @@ class _DateScheduleListState extends State<DateScheduleList> {
        
     );
   }
+  
 }
 
